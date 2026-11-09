@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f2e9">
+    <meta name="poppy-api-url" content="">
+    <title>In Remembrance — A Field of Poppies</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script src="./app.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#poppy-field">Skip to the poppy field</a>
+    <header class="site-header">
+        <a class="wordmark" href="./" aria-label="In Remembrance, home">
+            <span class="wordmark-flower" aria-hidden="true">✿</span>
+            <span>In Remembrance</span>
+        </a>
+        <span class="header-note">Lest we forget</span>
+    </header>
+
+    <main>
+        <section class="intro" aria-labelledby="page-title">
+            <p class="eyebrow">11 November · Remembrance Day</p>
+            <h1 id="page-title">A field of <span>remembrance</span></h1>
+            <p class="intro-copy">
+                We remember all who served and those who gave their lives.
+                Dedicate a poppy in honour of a veteran and let their name be
+                held in this shared field.
+            </p>
+            <button class="add-button" id="open-dedication" type="button" disabled>
+                <span aria-hidden="true">＋</span> Add a poppy
+            </button>
+            <p class="connection-note" id="connection-status" role="status" aria-live="polite">
+                Connecting to the shared poppy field…
+            </p>
+        </section>
+
+        <section class="field-section" id="poppy-field" aria-labelledby="field-title">
+            <div class="field-heading">
+                <div>
+                    <p class="eyebrow">Every name remembered</p>
+                    <h2 id="field-title">The poppy field</h2>
+                </div>
+                <p class="field-count" id="field-count">Loading dedications…</p>
+            </div>
+            <div class="field" id="field" aria-busy="true">
+                <div class="empty-state" id="empty-state">
+                    <span class="empty-flower" aria-hidden="true">✿</span>
+                    <p>No poppies have been planted yet.</p>
+                    <p>Be the first to dedicate one in someone's honour.</p>
+                </div>
+            </div>
+            <p class="field-hint">Focus or point to a poppy to read the name it honours.</p>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <p>We will remember them.</p>
+        <p>Names are shared publicly so that we may remember together.</p>
+    </footer>
+
+    <dialog class="dedication-dialog" id="dedication-dialog" aria-labelledby="dialog-title">
+        <form class="dedication-form" id="dedication-form" novalidate>
+            <button class="dialog-close" id="close-dialog" type="button" aria-label="Close dedication form">×</button>
+            <p class="eyebrow">A name held in remembrance</p>
+            <h2 id="dialog-title">Dedicate a poppy</h2>
+            <p class="form-intro">Enter the name of the veteran you wish to honour. The name will be visible to everyone who visits this field.</p>
+            <label for="veteran-name">Veteran's name</label>
+            <input id="veteran-name" name="name" type="text" autocomplete="off" maxlength="320" aria-describedby="name-help form-error" required>
+            <p class="input-help" id="name-help">Up to 80 characters. Please enter a name only, without markup.</p>
+            <p class="form-error" id="form-error" role="alert" aria-live="assertive"></p>
+            <div class="form-actions">
+                <button class="cancel-button" id="cancel-dedication" type="button">Cancel</button>
+                <button class="submit-button" id="submit-dedication" type="submit">Plant this poppy</button>
+            </div>
+        </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
+</body>
+</html>
